@@ -2,9 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import navItems from '../constants';
 
-const NavBar = ({activeItem, setActiveItem}) => {
+const NavBar = ({activeItem, setActiveItem, paddingTop}) => {
     const MainNav = styled.div`
         overflow: hidden;
+        padding-top: ${paddingTop}px;
     `;
     const NavItem = styled.a`
         float: left;

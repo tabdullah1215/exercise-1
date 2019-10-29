@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Sticky from 'react-sticky-el';
 import Slide from './Slide';
 import Header from "./Header";
-import navItems from '../constants';
+import navItems, {headerStyles} from '../constants';
 
 const MainView = styled.div`
         height: 100%;
@@ -16,7 +16,10 @@ class Container extends React.Component {
         super(props);
         this.state = {
             activeItem: '',
-            scrollStatus: ''
+            scrollStatus: '',
+            headerStyles: {
+                ...headerStyles.initial
+            }
         };
         this._timeout = null;
     }
@@ -35,6 +38,22 @@ class Container extends React.Component {
         }, {name: 'main', posY: this.main && mainHeight});
     };
 
+    getHeaderStyles = () => {
+        if(this.main.scrollTop > this.header.getBoundingClientRect().height){
+            this.setState({
+                headerStyles: {
+                    ...headerStyles.shrunk
+                }
+            })
+        } else {
+            this.setState({
+                headerStyles: {
+                    ...headerStyles.initial
+                }
+            })
+        }
+    };
+
     handleScroll = (event) => {
         event.preventDefault();
         if(this._timeout){
@@ -42,6 +61,7 @@ class Container extends React.Component {
         }
         this._timeout = setTimeout(() => {
             this._timeout = null;
+            this.getHeaderStyles();
             this.setState({
                 scrollStatus:'stopped',
                 activeItem: this.getClosestInViewRef().name
@@ -62,11 +82,17 @@ class Container extends React.Component {
     };
 
     render() {
-        const {activeItem} = this.state;
+        const {activeItem, headerStyles} = this.state;
+        const { height, shadowColor, paddingTop, picWidth, picHeight, navPadding } = headerStyles;
         return (
             <MainView id="main" className="main" onScroll={this.handleScroll} ref={(ref) => this.main = ref}>
                 <Sticky scrollElement=".main">
-                    <Header ref={(ref) => this.header = ref} name="header" navItems={navItems} activeItem={activeItem} setActiveItem={this.setActiveItem}/>
+                    <Header ref={(ref) => this.header = ref}
+                            name="header"
+                            activeItem={activeItem}
+                            setActiveItem={this.setActiveItem}
+                            headerStyles={{height, shadowColor, paddingTop, picWidth, picHeight, navPadding}}
+                    />
                 </Sticky>
                 <Slide ref={(ref) => this.intro = ref} name="intro" height="473" color="white">intro</Slide>
                 <Slide ref={(ref) => this.overview = ref} name="overview" height="473" color="white">overview</Slide>
