@@ -30,7 +30,7 @@ const NavBar = ({activeItem, setActiveItem, paddingTop}) => {
     return(
         <MainNav>
         {
-            navItems.map(item => {
+            navItems.filter(item => item.name !== 'intro').map(item => {
                 let activeState = activeItem === item.name;
                 return <NavItem
                     style={{color: activeState ? '#1F40E6' : '#000000'}}

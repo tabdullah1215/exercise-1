@@ -17,9 +17,7 @@ class Container extends React.Component {
         this.state = {
             activeItem: '',
             scrollStatus: '',
-            headerStyles: {
-                ...headerStyles.initial
-            }
+            shrink: false
         };
         this._timeout = null;
     }
@@ -38,35 +36,20 @@ class Container extends React.Component {
         }, {name: 'main', posY: this.main && mainHeight});
     };
 
-    getHeaderStyles = () => {
-        if(this.main.scrollTop > this.header.getBoundingClientRect().height){
-            this.setState({
-                headerStyles: {
-                    ...headerStyles.shrunk
-                }
-            })
-        } else {
-            this.setState({
-                headerStyles: {
-                    ...headerStyles.initial
-                }
-            })
-        }
-    };
-
     handleScroll = (event) => {
         event.preventDefault();
+        const closestRef = this.getClosestInViewRef().name;
         if(this._timeout){
             clearTimeout(this._timeout);
         }
         this._timeout = setTimeout(() => {
             this._timeout = null;
-            this.getHeaderStyles();
             this.setState({
                 scrollStatus:'stopped',
-                activeItem: this.getClosestInViewRef().name
+                activeItem: closestRef,
+                shrink: closestRef !== 'intro'
             });
-        },1000);
+        },500);
         if(this.state.scrollStatus !== 'scrolling') {
             this.setState({
                 scrollStatus:'scrolling'
@@ -75,15 +58,12 @@ class Container extends React.Component {
     };
 
     setActiveItem = (activeItem) => {
-        this.setState({
-            activeItem
-        });
+        //scrolling the ref triggers the onScroll event which adds the selected item into state
         this[activeItem].scrollIntoView({block: 'end', behavior: 'smooth'});
     };
 
     render() {
-        const {activeItem, headerStyles} = this.state;
-        const { height, shadowColor, paddingTop, picWidth, picHeight, navPadding } = headerStyles;
+        const {activeItem, shrink} = this.state;
         return (
             <MainView id="main" className="main" onScroll={this.handleScroll} ref={(ref) => this.main = ref}>
                 <Sticky scrollElement=".main">
@@ -91,7 +71,8 @@ class Container extends React.Component {
                             name="header"
                             activeItem={activeItem}
                             setActiveItem={this.setActiveItem}
-                            headerStyles={{height, shadowColor, paddingTop, picWidth, picHeight, navPadding}}
+                            headerStyles={headerStyles}
+                            shrink={shrink}
                     />
                 </Sticky>
                 <Slide ref={(ref) => this.intro = ref} name="intro" height="473" color="white">intro</Slide>
