@@ -10,8 +10,8 @@ const Hero = (props) => {
         width: 100%;
         height: 100%;
         box-sizing: border-box;
-        margin-left: 100px;
-        margin-top: 20px;
+        padding-left: 100px;
+        padding-top: 20px;
     `;
     const Title = styled.div`
         width: 50%;
@@ -24,6 +24,10 @@ const Hero = (props) => {
         font-family: "TheinhardtPan-Light";
         font-size: 20px;
         color: #333333;
+    `;
+
+    const Paragraph = styled.div`
+        padding-right: 50px;
     `;
 
     const background = {
@@ -39,7 +43,12 @@ const Hero = (props) => {
             <Body>
                 {
                     props.body.map((b, i) => {
-                        return <p key={i}>{b}</p>
+                        return (
+                            <React.Fragment>
+                            <Paragraph key={i}>{b}</Paragraph>
+                            <br/>
+                            </React.Fragment>
+                        )
                     })
                 }
             </Body>
