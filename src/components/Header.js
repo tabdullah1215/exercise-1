@@ -23,7 +23,7 @@ const Header = React.forwardRef(({activeItem, setActiveItem, headerStyles, shrin
         flex-direction: row;
         margin-bottom: 20px;
         width: 100%;
-        background-color: transparent;
+        background-color: #ffffff;
         box-shadow: 0px 10px 5px ${shadowColor};
     `;
 
