@@ -14,19 +14,19 @@ const Hero = (props) => {
         padding-top: 20px;
     `;
     const Title = styled.div`
-        width: 50%;
+        width: 60%;
         font-family: "Amiri", serif;
         font-size: 60px;
         color: #000000;
     `;
     const Body = styled.div`
-        width: 50%;
+        width: 60%;
         font-family: "TheinhardtPan-Light";
         font-size: 20px;
         color: #333333;
     `;
 
-    const Paragraph = styled.div`
+    const Paragraph = styled.p`
         padding-right: 50px;
     `;
 
@@ -45,8 +45,7 @@ const Hero = (props) => {
                     props.body.map((b, i) => {
                         return (
                             <React.Fragment>
-                            <Paragraph key={i}>{b}</Paragraph>
-                            <br/>
+                                <Paragraph key={i}>{b}</Paragraph>
                             </React.Fragment>
                         )
                     })

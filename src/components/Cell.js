@@ -10,28 +10,45 @@ const Cell = (props) => {
         width: 100%;
         height: 100%;
         box-sizing: border-box;
-        padding: 40px 50px;
-        ${({inverted}) => inverted ? `background-color: #000000` : `background-color: #F0F0F0` }
+        ${({isTileMode}) => isTileMode && `margin: 5px 5px` };
+        ${({isTileMode}) => isTileMode ? `padding: 15px 18px` : `padding: 40px 50px` };
+        ${({inverted}) => inverted ? `background-color: #000000` : `background-color: #F0F0F0` };
     `;
     const Title = styled.div`
         width: 100%;
         font-family: "Amiri", serif;
-        font-size: 60px;
-        ${({inverted}) => inverted ? `color: #ffffff` : `color: #000000` }
+        ${({isTileMode}) => (isTileMode ? `font-size: 28px` : `font-size: 60px`) };
+        ${({inverted}) => inverted ? `color: #ffffff` : `color: #000000` };
     `;
     const Body = styled.div`
         width: 100%;
         font-family: "TheinhardtPan-Light";
-        font-size: 20px;
-        ${({inverted}) => inverted ? `color: #ffffff` : `color: #333333` }
+        ${({isTileMode}) => isTileMode ? `font-size: 16px` : `font-size: 20px` };
+        ${({inverted}) => inverted ? `color: #ffffff` : `color: #333333` };
     `;
 
     const Links = styled.div`
         width: 100%;
         font-family: "TheinhardtPan-Light";
-        font-size: 16px;
+        ${({isTileMode}) => isTileMode ? `font-size: 12px` : `font-size: 16px` }
         ${({inverted}) => inverted ? `color: #ffffff` : `color: #333333` }
-    `
+    `;
+
+    const Paragraph = styled.p``;
+
+    const Anchor = styled.a`
+        text-decoration: none;
+        color: #000000;
+        margin-right: 0.5em;
+        &:hover {
+            color: #1F40E6;
+        }
+    `;
+
+    const Image = styled.img`
+        width: 1em;
+        height: 1em;  
+    `;
 
     const background = {
         height: "100%",
@@ -41,19 +58,27 @@ const Cell = (props) => {
     console.log(props);
 
     return(
-        <MainView inverted={props.inverted}>
-            <Title inverted={props.inverted}>{props.title}</Title>
-            <Body inverted={props.inverted}>
+        <MainView isTileMode={props.isTileMode} inverted={props.inverted}>
+            <Title isTileMode={props.isTileMode} inverted={props.inverted}>{props.title}</Title>
+            <Body isTileMode={props.isTileMode} inverted={props.inverted}>
             {
                 props.body.map((b, i) => {
                     return <p key={i}>{b}</p>
                 })
             }
             </Body>
-            <Links inverted={props.inverted}>
+            <Links isTileMode={props.isTileMode} inverted={props.inverted}>
             {
                 props.links.map((lk, i) => {
-                    return <p key={i}>{lk}</p>
+                    return (
+                        <React.Fragment>
+                            <Paragraph>
+                                <Anchor href="#" key={i}>{`${lk}  `}&nbsp;
+                                    <Image src="RightArrow-ElectricBlue.svg"/>
+                                </Anchor>
+                            </Paragraph>
+                        </React.Fragment>
+                    )
                 })
             }
             </Links>
