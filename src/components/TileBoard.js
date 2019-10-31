@@ -1,28 +1,33 @@
 import React from 'react';
 import styled from 'styled-components';
 import Grid from './Grid';
+import Title from './Title';
 
 const TileBoard = (props) => {
     const MainView = styled.div`
         width: 100%;
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         box-sizing: border-box;
         padding: 10px 10px;
     `;
-    const TileGroup = styled.div`
-        width: 50%;
+    const Grids = styled.div`
+        width: 100%;
+        display: flex;
+        flex-direction: row;
     `;
 
-    console.log(props.content);
-    const {tileBoard} = props.content;
+    const {info, title} = props.content;
     return(
         <MainView>
+            <Title heading={title.heading} subheading={title.subheading}/>
+            <Grids>
             {
-                tileBoard.map((grid, i) => {
-                    return <Grid isTileMode={true} content={grid}/>
+                info.map((grid, i) => {
+                    return <Grid key={i} isTileMode={true} content={grid}/>
                 })
             }
+            </Grids>
         </MainView>
     )
 };

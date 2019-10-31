@@ -11,7 +11,7 @@ const Hero = (props) => {
         height: 100%;
         box-sizing: border-box;
         padding-left: 100px;
-        padding-top: 20px;
+        padding-top: 40px;
     `;
     const Title = styled.div`
         width: 60%;
@@ -35,8 +35,6 @@ const Hero = (props) => {
         backgroundImage: 'url(TopBanner-illustration@2x.png)'
     };
 
-    console.log(props);
-
     return(
         <MainView>
             <Title>{props.title}</Title>
@@ -44,9 +42,7 @@ const Hero = (props) => {
                 {
                     props.body.map((b, i) => {
                         return (
-                            <React.Fragment>
-                                <Paragraph key={i}>{b}</Paragraph>
-                            </React.Fragment>
+                            <Paragraph key={i}>{b}</Paragraph>
                         )
                     })
                 }

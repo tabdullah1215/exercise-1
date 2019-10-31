@@ -43,6 +43,7 @@ const Cell = (props) => {
         &:hover {
             color: #1F40E6;
         }
+        ${({inverted}) => inverted ? `color: #ffffff` : `color: #333333` }
     `;
 
     const Image = styled.img`
@@ -54,8 +55,6 @@ const Cell = (props) => {
         height: "100%",
         backgroundImage: 'url(TopBanner-illustration@2x.png)'
     };
-
-    console.log(props);
 
     return(
         <MainView isTileMode={props.isTileMode} inverted={props.inverted}>
@@ -71,13 +70,11 @@ const Cell = (props) => {
             {
                 props.links.map((lk, i) => {
                     return (
-                        <React.Fragment>
-                            <Paragraph>
-                                <Anchor href="#" key={i}>{`${lk}  `}&nbsp;
+                            <Paragraph key={i}>
+                                <Anchor inverted={props.inverted} href="#">{`${lk}  `}&nbsp;
                                     <Image src="RightArrow-ElectricBlue.svg"/>
                                 </Anchor>
                             </Paragraph>
-                        </React.Fragment>
                     )
                 })
             }
