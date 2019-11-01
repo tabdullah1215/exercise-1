@@ -1,9 +1,9 @@
-import React from 'react';
+import React, {memo} from 'react';
 import styled from 'styled-components';
 import Title from './Title';
 
 
-const ImageView = (props) => {
+const ImageView = memo((props) => {
     const MainView = styled.div`
         width: 100%;
         height: 100%;
@@ -36,10 +36,10 @@ const ImageView = (props) => {
       <MainView>
           <ImageContainer>
               <Title heading={title.heading} subheading={title.subheading} inverted={true}/>
-              <Image src="Roadmap-Desktop.png" alt="roadmap desktop"/>
+              <Image src={info}/>
           </ImageContainer>
       </MainView>
     );
-};
+}, () => true);
 
 export default ImageView;

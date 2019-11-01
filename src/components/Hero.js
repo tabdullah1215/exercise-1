@@ -30,11 +30,6 @@ const Hero = (props) => {
         padding-right: 50px;
     `;
 
-    const background = {
-        height: "100%",
-        backgroundImage: 'url(TopBanner-illustration@2x.png)'
-    };
-
     return(
         <MainView>
             <Title>{props.title}</Title>
