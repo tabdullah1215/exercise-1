@@ -24,7 +24,7 @@ const TileBoard = (props) => {
             <Grids>
             {
                 info.map((grid, i) => {
-                    return <Grid key={i} isTileMode={true} content={grid}/>
+                    return <Grid key={i} index={i} isTileMode={true} content={grid}/>
                 })
             }
             </Grids>
