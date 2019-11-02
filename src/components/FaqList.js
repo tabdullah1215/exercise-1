@@ -68,10 +68,8 @@ class FaqList extends Component {
 
     onClick = (i) => {
         const { height } = this.state;
-        console.log('clicked', i);
         const newHeight = [...height];
         newHeight[i] = !newHeight[i] || newHeight[i] === 0 ? 'auto' : 0;
-        console.log('height', height);
         this.setState({
             height: newHeight
         });
@@ -79,14 +77,14 @@ class FaqList extends Component {
 
     render() {
         const { height } = this.state;
-        const { faqs } = this.props.content;
+        const { content } = this.props.contentMap;
 
         return (
             <MainView>
                 <ListContainer>
                     {
-                        faqs.map((faq, i) => {
-                            return <Faq>
+                        content.map((faq, i) => {
+                            return <Faq key={i}>
                                 <Question onClick={() => this.onClick(i)}>
                                     <SideMargin>
                                         <Image src={height[i] === 'auto' ? 'c-delete.svg' : 'c-add.svg'}/>
@@ -96,7 +94,7 @@ class FaqList extends Component {
                                     </ContentContainer>
                                     <SideMargin/>
                                 </Question>
-                                < AnimateHeight
+                                <AnimateHeight
                                     duration={500}
                                     height={!height[i] ? 0 : height[i]}
                                 >

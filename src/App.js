@@ -1,7 +1,8 @@
 import React from 'react';
 import './App.css';
 import styled from 'styled-components';
-import Container from './components/Container';
+import SlideViewer from './components/SlideViewer';
+import contentMap from './content';
 
 function App() {
 
@@ -16,7 +17,7 @@ function App() {
   return (
       <div className="App">
         <MainView>
-          <Container/>
+          <SlideViewer contentMap={contentMap}/>
         </MainView>
       </div>
   );

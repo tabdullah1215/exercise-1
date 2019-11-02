@@ -17,14 +17,15 @@ const TileBoard = (props) => {
         flex-direction: row;
     `;
 
-    const {info, title} = props.content;
+    const {content} = props.contentMap;
+    const {info, title} = content;
     return(
         <MainView>
             <Title heading={title.heading} subheading={title.subheading}/>
             <Grids>
             {
-                info.map((grid, i) => {
-                    return <Grid key={i} index={i} isTileMode={true} content={grid}/>
+                info.map((grids, i) => {
+                    return <Grid key={i} index={i} isTileMode={true} contentMap={grids}/>
                 })
             }
             </Grids>

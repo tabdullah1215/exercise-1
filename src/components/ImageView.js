@@ -31,7 +31,8 @@ const ImageView = memo((props) => {
         margin-top: 30px;
     `;
 
-    const {info, title} = props.content;
+    const {content} = props.contentMap;
+    const {info, title} = content;
     return (
       <MainView>
           <ImageContainer>
