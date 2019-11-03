@@ -6,11 +6,12 @@ import {device} from '../constants';
 const MainView = styled.div`
     width: 100%;
     height: 100%;
-    background-color: #F0F0F0;
+    background-color: #979797;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 20px 0;
 `;
 
 const ListContainer = styled.div`

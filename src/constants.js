@@ -47,6 +47,21 @@ const device = {
     desktopL: `(min-width: ${size.desktop})`
 };
 
+const cellHeight = {
+    tileMode: {
+        mobileS: 200,
+        tablet: 250,
+        laptop: 250,
+        laptopL: 150
+    },
+    gridMode: {
+        mobileS: 385,
+        tablet: 310,
+        laptop: 440,
+        laptopL: 440
+    }
+}
+
 
 export default navItems;
-export { headerStyles, device };
+export { headerStyles, device, cellHeight };

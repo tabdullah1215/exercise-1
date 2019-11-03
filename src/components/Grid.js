@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from "styled-components";
 import Cell from './Cell';
+import {device} from '../constants';
 
 const Grid = (props) => {
     const getWidthString = (span) => {
@@ -16,7 +17,10 @@ const Grid = (props) => {
         align-items: center;
         height: 100%;
         ${({isTileMode}) => isTileMode && `max-width: 50%;` }
-        ${({isTileMode}) => isTileMode && `padding 0 5px;` }
+        ${({isTileMode}) => isTileMode && `padding 0 2px;` }
+        @media ${device.tablet} {
+            ${({isTileMode}) => isTileMode && `padding 0 5px;` }
+        }
     `;
     const Row = styled.div`
         height: 100%;
