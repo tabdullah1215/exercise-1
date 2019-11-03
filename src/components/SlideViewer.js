@@ -4,11 +4,6 @@ import Sticky from 'react-sticky-el';
 import Slide from './Slide';
 import Header from "./Header";
 import navItems, {headerStyles} from '../constants';
-import Hero from './Hero';
-import Grid from './Grid';
-import TileBoard from "./TileBoard";
-import ImageView from "./ImageView";
-import FaqList from './FaqList';
 import DynamicSlide from './DynamicSlide';
 
 const MainView = styled.div`
