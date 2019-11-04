@@ -7,7 +7,7 @@ const ContentView = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    width: 60%;
+    width: 100%;
     height: 100%;
     box-sizing: border-box;
     padding-left: 35px;
@@ -15,6 +15,7 @@ const ContentView = styled.div`
     @media ${device.tablet} {
         padding-left: 70px;
         padding-top: 0;
+        width: 60%;
     }
     @media ${device.laptop} {
         padding-left: 100px;
@@ -22,8 +23,12 @@ const ContentView = styled.div`
     }
 `;
 const MediaView = styled.div`
-    width: 40%;
-    padding: 20px 20px 30px 20px;
+    display: none;
+    @media ${device.tablet}{
+        display: block;
+        width: 40%;
+        padding: 20px 20px 30px 20px;
+    }
 `;
 
 const MainView = styled.div`
