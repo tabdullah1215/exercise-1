@@ -11,9 +11,9 @@ These components are completely content-agnostic, and are decoupled from the con
 content strictly by passing through properties.
 
 ### Slide Paradigm
-The slide paradigm was implemented in this exercise to leverage the scrolling navigation feature
-and present each view of the site in an isolated focused way, hence the term `slide`.  Therefore,
-all views have a uniform height and fit the view window without the need to scroll, as would be expected of a slide.
+This exercise was designed with the slide paradigm in mind.  The Slide user experience leverages the scrolling navigation feature
+of the Navbar to present each view to the user in an immersive and focused way, hence the term `slide`.  Therefore,
+all views have a uniform height and fit the view window without content overflow, as would be expected of a slide.
 
 ### SlideViewer and DynamicSlide
 The `SlideViewer` and `DynamicSlide` components are the heart of this web app.  These 2 components are the only `smart` components 
@@ -31,6 +31,7 @@ layout of the web site.
 ### PropTypes
 Implementing proptypes is a necessary first step to ensuring a robust content mapping system.
 Proptypes offers the first layer of validation to indicate that the content will properly scaffold out into the components.
+Subsequent layers of validation can be integrated to check at run-time and inform the user that the content file is malformed.
 
 ### Data Definition Document (to-do)
 In theory, this content-driven application would be deployed along with a data definition document.
