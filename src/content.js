@@ -11,7 +11,8 @@ const contentMap =
             Firm.`,
                     `With the new McKinsey Design System you'll finally be able to re-use, 
             share and deliver more consistent experiences at the speed of delight. `
-                ]
+                ],
+                media: "TopBanner-illustration@2x.png"
             }
         },
         overview: {
@@ -158,7 +159,8 @@ const contentMap =
                     `Come join other pioneers as we take small steps towards working better.`,
                     `Find us on Slack #ddls-community`,
                     `Contact us via desig_system@mckinsey.com`
-                ]
+                ],
+                media: "Slack-Cards-Img@2x.png"
             }
         },
         faq: {
